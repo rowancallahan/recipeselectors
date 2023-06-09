@@ -128,10 +128,10 @@ roc_calc <- function(x, y) {
 
 #' @export
 prep.step_select_roc <- function(x, training, info = NULL, ...) {
-  y_name <- recipes::terms_select(x$outcome, info = info)
+  y_name <- recipes::recipes_eval_select(x$outcome, info = info)
   y_name <- x$outcome[1]
   recipes::check_type(training[, y_name], quant = FALSE)
-  x_names <- recipes::terms_select(x$terms, info = info, empty_fun = I)
+  x_names <- recipes::recipes_eval_select(x$terms, info = info, empty_fun = I)
 
   if(length(x_names) > 0) {
 
